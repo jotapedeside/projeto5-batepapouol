@@ -1,0 +1,70 @@
+body {
+  font-size: 14px;
+  background-color: #e5e5e5;
+  font-family: Roboto;
+}
+ion-icon {
+  font-size: 24px;
+}
+.topbar {
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  left: 0px;
+  top: 0px;
+
+  background: #ffffff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.topbar img {
+  width: 70px;
+  height: 50px;
+}
+.messages {
+  margin: 90px 0;
+}
+.messages > * {
+  width: 100%;
+  height: 40px;
+  margin: 8px 0;
+  border-radius: 2px;
+  padding-left: 8px;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.io-room > *,
+.message > *,
+.reserved > * {
+  margin: 3px;
+}
+.io-room {
+  background: #dcdcdc;
+}
+.message {
+  background: #ffffff;
+}
+.reserved {
+  background: #ffdede;
+}
+.time,
+.from,
+.to {
+  font-weight: 700;
+}
+
+.write-message {
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  left: 0px;
+  bottom: 0px;
+
+  background: #ffffff;
+  box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.05);
+}
