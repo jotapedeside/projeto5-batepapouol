@@ -9,26 +9,33 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js" defer></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script src="js/script.js" defer></script>
     <title></title>
   </head>
   <body>
     <div class="container">
       <div class="topbar">
         <img src="img/logo 1.png">
-        <ion-icon name="people"></ion-icon>
+        <button onclick="openSideBar()"><ion-icon name="people"></ion-icon></button>
       </div>
 
       <div class="messages">
 
       </div>
       <div class="write-message">
-        <input type="text">
-        <button>Enviar</button>
+        <input type="text" class="text-message">
+        <button onclick="sendMessage()">Enviar</button>
+      </div>
+    </div>
+    
+    <div class="container-side-bar" onclick="closeSideBar()">
+      <div class="side-bar">
+        
       </div>
     </div>
 
-    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="js/script.js"></script>
   </body>
 </html>

@@ -8,8 +8,8 @@ function request(type, route, data) {
 }
 
 function connect() {
-  nome = prompt("Qual seu nome?");
-  //const nome = 'João';
+  //nome = prompt("Qual seu nome?");
+  nome = "JoaoPedroDesi" + (Math.random() * 1000000).toFixed(0);
   console.log(nome);
 
   const res = request(
@@ -206,6 +206,46 @@ function keepConnection(nome) {
     .catch((err) => {
       console.log(err);
     });
+}
+
+function sendMessage() {
+  const messageElement = document.querySelector(".text-message");
+
+  const res = request(
+    axios.post,
+    "https://mock-api.driven.com.br/api/v6/uol/messages",
+    {
+      from: nome,
+      to: "Todos",
+      text: messageElement.value,
+      type: "message",
+    }
+  );
+  res
+    .then(() => {
+      messageElement.value = "";
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+function openSideBar() {
+  const container = document.querySelector(".container-side-bar");
+  const sideBar = document.querySelector(".side-bar");
+
+  container.style.display = "flex";
+  container.style.opacity = "100%";
+  sideBar.classList.add("transition");
+}
+
+function closeSideBar() {
+  const container = document.querySelector(".container-side-bar");
+  const sideBar = document.querySelector(".side-bar");
+
+  container.style.display = "none";
+  container.style.opacity = 0;
+  sideBar.classList.remove("transition");
 }
 
 function quemtanasala(nome) {}
