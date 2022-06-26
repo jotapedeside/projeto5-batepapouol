@@ -82,11 +82,7 @@ function getMessages() {
 }
 
 function addMessage(messageObj) {
-  if (
-    globalMessages[ii].type === "private_message" &&
-    globalMessages[ii].to !== nome
-  )
-    return;
+  if (messageObj.type === "private_message" && messageObj.to !== nome) return;
 
   let message;
   switch (messageObj.type) {
