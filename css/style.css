@@ -19,11 +19,23 @@ ion-icon {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
 }
 .topbar img {
   width: 70px;
   height: 50px;
+}
+.topbar-items,
+.input-row {
+  width: 100%;
+  margin: 0 20px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.text-message {
+  border: none;
 }
 .messages {
   margin: 90px 0;
@@ -37,6 +49,7 @@ ion-icon {
   display: flex;
   align-items: center;
   flex-direction: row;
+  box-sizing: border-box;
 }
 .io-room > *,
 .message > *,
@@ -67,6 +80,9 @@ ion-icon {
 
   background: #ffffff;
   box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }
 .container-side-bar {
   display: none;
@@ -96,4 +112,89 @@ ion-icon {
 }
 .transition {
   right: 0;
+}
+
+.out-side-bar {
+  position: fixed;
+  width: calc(100% - 350px);
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  transition: all 300ms ease-in-out 100ms;
+}
+
+.contacts {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 40px 15px;
+}
+.contacts p {
+  font-size: 16px;
+  font-weight: 700;
+}
+.actual-contacts {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.contact {
+  margin: 4px 0;
+  display: flex;
+  align-items: center;
+}
+.contact > * {
+  margin: 0 4px;
+}
+.login {
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.login img {
+  margin: 80px 0;
+}
+.name-inputer {
+  width: 261px;
+  height: 54px;
+  left: 57px;
+  top: 258px;
+  margin: 40px 0;
+
+  background: #ffffff;
+  border: 1px solid #d7d7d7;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.enter-name {
+  width: 109px;
+  height: 45px;
+  left: 133px;
+  top: 327px;
+
+  background: #e7e7e7;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.enter-name:focus {
+  /*NOT WORKING*/
+  outline: none !important;
+}
+.fake-space {
+  height: 300px;
+}
+.clickable-icon:hover {
+  cursor: pointer;
 }

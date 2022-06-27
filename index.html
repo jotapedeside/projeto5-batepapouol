@@ -17,24 +17,48 @@
   </head>
   <body>
     <div class="container">
-      <div class="topbar">
+
+      <div class="login">
+        
         <img src="img/logo 1.png">
-        <button onclick="openSideBar()"><ion-icon name="people"></ion-icon></button>
+        <div class="name-inputer">
+          <input type="text" class="namer" placeholder="Digite seu nome">
+        </div>
+        <div class="enter-name" onclick="connect()">Entrar</div>
+        <div class="fake-space"></div>
+      </div>
+      <div class="topbar">
+        <div class="topbar-items">
+          <img src="img/logo 1.png">
+          <div class="clickable-icon" onclick="openSideBar()"><ion-icon name="people"></ion-icon></div>
+        </div>
       </div>
 
       <div class="messages">
 
       </div>
-      <div class="write-message">
-        <input type="text" class="text-message">
-        <button onclick="sendMessage()">Enviar</button>
+      <div class="write-message">     
+        <div class="input-row">
+          <input type="text" class="text-message" placeholder="Escreva aqui...">
+          <div class="clickable-icon" onclick="sendMessage()"><ion-icon name="paper-plane-outline"></ion-icon></div>
+        </div>
       </div>
     </div>
-    
-    <div class="container-side-bar" onclick="closeSideBar()">
+
+    <div class="container-side-bar">
       <div class="side-bar">
-        
+        <div class="contacts">
+          <p>Usuários online:</p>
+          <div class="actual-contacts">
+            <div class="contact">
+              <ion-icon name="people"></ion-icon>
+              Todos
+            </div>
+            
+          </div>
+        </div>
       </div>
+      <div class="out-side-bar" onclick="closeSideBar()"></div>
     </div>
 
   </body>

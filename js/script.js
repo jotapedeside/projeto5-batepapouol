@@ -1,13 +1,26 @@
 let globalMessages = [];
 let nome;
 
+//login();
 connect();
-
 function request(type, route, data) {
   return type(route, data);
 }
 
+// TODO: FAZER ISSO FICAR MELHOR
+const msgEl = document.querySelector(".text-message");
+msgEl.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    sendMessage();
+  }
+});
+
 function connect() {
+  let nameVar = document.querySelector(".namer");
+  nome = nameVar.value;
+  const container = document.querySelector(".login");
+  container.style.display = "none";
+
   //nome = prompt("Qual seu nome?");
   nome = "JoaoPedroDesi" + (Math.random() * 1000000).toFixed(0);
   console.log(nome);
@@ -35,8 +48,8 @@ function connect() {
     })
     .catch((err) => {
       if (err.response.status === 400) {
-        alert("Já existe um usuário com esse nome");
-        connect();
+        //alert("Já existe um usuário com esse nome");
+        //connect();
       } else console.log(err);
     });
 }
@@ -125,7 +138,7 @@ function addMessage(messageObj) {
   const messageType = {
     status: "io-room",
     message: "message",
-    privateMessage: "reserved",
+    private_message: "reserved",
   };
   const messageElement = document.createElement("div");
   messageElement.classList.add(messageType[messageObj.type]);
@@ -227,25 +240,80 @@ function sendMessage() {
     })
     .catch((err) => {
       console.log(err);
+      window.location.reload();
     });
 }
 
 function openSideBar() {
   const container = document.querySelector(".container-side-bar");
-  const sideBar = document.querySelector(".side-bar");
 
   container.style.display = "flex";
-  container.style.opacity = "100%";
-  sideBar.classList.add("transition");
+
+  setTimeout(() => {
+    renderSide();
+  }, 100);
+
+  fetchOnlineUsers();
 }
 
 function closeSideBar() {
   const container = document.querySelector(".container-side-bar");
   const sideBar = document.querySelector(".side-bar");
 
-  container.style.display = "none";
   container.style.opacity = 0;
-  sideBar.classList.remove("transition");
+  sideBar.style.right = "-350px";
+  setTimeout(() => {
+    unRenderSide();
+  }, 100);
 }
 
-function quemtanasala(nome) {}
+function unRenderSide() {
+  const container = document.querySelector(".container-side-bar");
+  container.style.display = "none";
+}
+
+function renderSide() {
+  const sideBarElement = document.querySelector(".side-bar");
+  const containerElement = document.querySelector(".container-side-bar");
+
+  containerElement.style.opacity = "100%";
+  sideBarElement.style.right = 0;
+}
+
+function fetchOnlineUsers() {
+  let user;
+  const res = request(
+    axios.get,
+    "https://mock-api.driven.com.br/api/v6/uol/participants"
+  );
+  res
+    .then((value) => {
+      /*
+      const ktks = document.querySelectorAll(".actual-contacts");
+      console.log(ktks);
+      ktks.parentNode.removeChild(ktks);*/
+      for (let ii = 0; ii < value.data.length; ii++) {
+        const usersElement = document.querySelector(".actual-contacts");
+        const userElement = document.createElement("div");
+        /*while (usersElement.length > 0) {
+          usersElement[0].parentNode.remove(usersElement[0]);
+        }*/
+
+        user = `
+          <div class="contact">
+          <ion-icon name="person-circle"></ion-icon>
+          ${value.data[ii].name}
+          </div>`;
+        userElement.innerHTML = user;
+        usersElement.appendChild(userElement);
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      console.log("Deu erro bro");
+    });
+
+  setTimeout(() => {
+    fetchOnlineUsers();
+  }, 10000);
+}
