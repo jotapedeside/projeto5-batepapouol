@@ -2,7 +2,7 @@ let globalMessages = [];
 let nome;
 
 //login();
-connect();
+//connect();
 function request(type, route, data) {
   return type(route, data);
 }
@@ -22,7 +22,7 @@ function connect() {
   container.style.display = "none";
 
   //nome = prompt("Qual seu nome?");
-  nome = "JoaoPedroDesi" + (Math.random() * 1000000).toFixed(0);
+  //nome = "JoaoPedroDesi" + (Math.random() * 1000000).toFixed(0);
   console.log(nome);
 
   const res = request(
