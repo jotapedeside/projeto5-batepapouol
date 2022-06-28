@@ -34,6 +34,10 @@ ion-icon {
   align-items: center;
   justify-content: space-between;
 }
+.text {
+  word-wrap: break-word;
+  width: 100%;
+}
 .text-message {
   border: none;
 }
@@ -150,6 +154,8 @@ ion-icon {
   margin: 0 4px;
 }
 .login {
+  position: fixed;
+  top: 0;
   width: 100vw;
   height: 100vh;
   z-index: 2;
@@ -191,6 +197,7 @@ ion-icon {
 .enter-name:focus {
   /*NOT WORKING*/
   outline: none !important;
+  border: none !important;
 }
 .fake-space {
   height: 300px;

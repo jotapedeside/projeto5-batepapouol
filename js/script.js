@@ -1,5 +1,6 @@
-let globalMessages = [];
 let nome;
+let users = [];
+let globalMessages = [];
 
 //login();
 //connect();
@@ -288,11 +289,24 @@ function fetchOnlineUsers() {
   );
   res
     .then((value) => {
-      /*
-      const ktks = document.querySelectorAll(".actual-contacts");
-      console.log(ktks);
-      ktks.parentNode.removeChild(ktks);*/
-      for (let ii = 0; ii < value.data.length; ii++) {
+      const engloberElement = document.querySelector(".contacts-englober");
+
+      if (users.length == 0) {
+        const actualContactsElement = document.createElement("div");
+        actualContactsElement.classList.add("actual-contacts");
+        engloberElement.appendChild(actualContactsElement);
+        users = value.data;
+      } else {
+        const actualContactsElement =
+          document.querySelector(".actual-contacts");
+        actualContactsElement.remove();
+
+        users = value.data;
+        const newContactsElement = document.createElement("div");
+        newContactsElement.classList.add("actual-contacts");
+        engloberElement.appendChild(newContactsElement);
+      }
+      for (let ii = 0; ii < users.length; ii++) {
         const usersElement = document.querySelector(".actual-contacts");
         const userElement = document.createElement("div");
         /*while (usersElement.length > 0) {
@@ -302,7 +316,7 @@ function fetchOnlineUsers() {
         user = `
           <div class="contact">
           <ion-icon name="person-circle"></ion-icon>
-          ${value.data[ii].name}
+          ${users[ii].name}
           </div>`;
         userElement.innerHTML = user;
         usersElement.appendChild(userElement);
